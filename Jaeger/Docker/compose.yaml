@@ -1,0 +1,10 @@
+services:
+  jaeger:
+    # I use specific versions rather than 'latest' to ensure stability
+    image: "jaegertracing/all-in-one:1.76.0"
+    container_name: "jaeger"
+    ports:
+      - "16686:16686"  # Jaeger UI
+      - "4318:4318"    # OpenTelemetry Collector HTTP
+    environment:
+      - COLLECTOR_ZIPKIN_HOST_PORT=:9411
